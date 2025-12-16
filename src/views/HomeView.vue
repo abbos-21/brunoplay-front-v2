@@ -13,6 +13,8 @@ import {
 import EnergyLevel from '@/components/EnergyLevel.vue'
 import HealthLevel from '@/components/HealthLevel.vue'
 import ProgressBar from '@/components/ProgressBar.vue'
+import { BackgroundAudio } from '@/assets/audios'
+import { useBackgroundMusic } from '@/composables/useBackgroundMusic'
 </script>
 
 <template>

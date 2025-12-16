@@ -16,7 +16,9 @@
     "format": "prettier --write --experimental-cli src/"
   },
   "dependencies": {
+    "@twa-dev/sdk": "^8.0.2",
     "@unocss/reset": "^66.5.10",
+    "axios": "^1.13.2",
     "pinia": "^3.0.4",
     "vite-svg-loader": "^5.1.0",
     "vue": "^3.5.25",

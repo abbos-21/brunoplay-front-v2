@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, watch, provide, onBeforeUnmount } from 'vue'
+import { ref, watch, provide, onBeforeUnmount, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import {
   MenuItemFriendsImage,
@@ -7,6 +7,10 @@ import {
   MenuItemShopImage,
   MenuItemTasksImage,
 } from './assets/images'
+// import { BackgroundAudio } from './assets/audios'
+// import { useBackgroundMusic } from './composables/useBackgroundMusic'
+import WebApp from '@twa-dev/sdk'
+import { AuthAPI } from './services/auth.api'
 
 const route = useRoute()
 
@@ -50,6 +54,21 @@ watch(
 
 onBeforeUnmount(() => {
   observer?.disconnect()
+})
+
+onMounted(async () => {
+  WebApp.ready()
+  WebApp.expand()
+  const initData = WebApp.initData
+
+  if (!initData) {
+    console.error('Telegram initData not found')
+    return
+  }
+
+  const { token } = await AuthAPI.loginWithTelegram(initData)
+
+  localStorage.setItem('token', token)
 })
 </script>
 

@@ -1,6 +1,7 @@
 import './assets/main.css'
 import 'virtual:uno.css'
 import '@unocss/reset/tailwind-v4.css'
+import './services/interceptors'
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
