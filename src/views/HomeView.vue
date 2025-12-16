@@ -31,7 +31,7 @@ import ProgressBar from '@/components/ProgressBar.vue'
           <img :src="WithdrawImage" class="w-5 h-5" alt="withdraw-image" />
         </RouterLink>
 
-        <RouterLink to="/" class="flex flex-col items-center gap-1">
+        <RouterLink to="/leaderboard" class="flex flex-col items-center gap-1">
           <img :src="PodiumImage" class="w-8" alt="podium-image" />
 
           <span class="bg-[#00C5A6] text-white text-[10px] font-bold px-1 py-px rounded-md"
@@ -74,13 +74,13 @@ import ProgressBar from '@/components/ProgressBar.vue'
 
     <div class="absolute inset-x-0 mx-auto bottom-25 flex justify-between items-start px-2">
       <button type="button">
-        <img :src="IceImage" class="w-8" alt="ice-image" />
+        <img :src="IceImage" class="w-9" alt="ice-image" />
       </button>
       <button type="button" class="collect-button">
         <img :src="CollectButtonImage" class="w-full" alt="collect-button-image" />
       </button>
       <button type="button">
-        <img :src="SpinImage" class="w-8" alt="spin-image" />
+        <img :src="SpinImage" class="w-9" alt="spin-image" />
       </button>
     </div>
   </div>

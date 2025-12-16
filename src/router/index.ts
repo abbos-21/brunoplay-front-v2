@@ -3,18 +3,19 @@ import HomeView from '../views/HomeView.vue'
 import ShopView from '@/views/ShopView.vue'
 import TasksView from '@/views/TasksView.vue'
 import FriendsView from '@/views/FriendsView.vue'
+import LeaderboardView from '@/views/LeaderboardView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
-      name: 'home',
+      name: 'Home',
       component: HomeView,
     },
     {
       path: '/about',
-      name: 'about',
+      name: 'About',
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
@@ -22,7 +23,7 @@ const router = createRouter({
     },
     {
       path: '/shop',
-      name: 'shop',
+      name: 'Shop',
       component: ShopView,
     },
     {
@@ -35,20 +36,25 @@ const router = createRouter({
         },
         {
           path: 'main',
-          name: 'tasks-main',
+          name: 'Main tasks',
           component: () => import('@/views/tasks/TasksMainView.vue'),
         },
         {
           path: 'partner',
-          name: 'tasks-partner',
+          name: 'Partner tasks',
           component: () => import('@/views/tasks/TasksPartnerView.vue'),
         },
       ],
     },
     {
       path: '/friends',
-      name: 'friends',
+      name: 'Friends',
       component: FriendsView,
+    },
+    {
+      path: '/leaderboard',
+      name: 'Leaderboard',
+      component: LeaderboardView,
     },
   ],
 })

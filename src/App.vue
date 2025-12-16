@@ -1,12 +1,24 @@
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount, provide } from 'vue'
-import { RouterView } from 'vue-router'
+import { ref, onMounted, onBeforeUnmount, provide, watch } from 'vue'
+import { RouterView, useRoute } from 'vue-router'
 import {
   MenuItemFriendsImage,
   MenuItemHomeImage,
   MenuItemShopImage,
   MenuItemTasksImage,
 } from './assets/images'
+
+const route = useRoute()
+
+const navIsVisible = ref<boolean>(true)
+
+watch(
+  () => route.name,
+  (newName) => {
+    if (newName === 'Leaderboard') navIsVisible.value = false
+    else navIsVisible.value = true
+  },
+)
 
 const navElement = ref<HTMLElement | null>(null)
 const navHeight = ref(0)
@@ -39,7 +51,11 @@ onBeforeUnmount(() => {
       <RouterView />
       <!-- :style="{ height: `calc(100% - ${navHeight}px)` }" -->
 
-      <nav ref="navElement" class="grid grid-cols-4 px-2 absolute bottom-2 inset-x-0 text-red-500">
+      <nav
+        ref="navElement"
+        v-if="navIsVisible"
+        class="grid grid-cols-4 px-2 absolute bottom-2 inset-x-0 text-red-500"
+      >
         <RouterLink to="/" class="cursor-pointer">
           <img :src="MenuItemHomeImage" alt="menu-item-home-image" />
         </RouterLink>

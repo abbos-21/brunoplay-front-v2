@@ -39,7 +39,7 @@
     content: '';
     width: 40px;
     height: 40px;
-    background: #74d4ff;
+    background: #00bcff;
     animation: animate 0.5s linear infinite;
     position: absolute;
     top: 0;

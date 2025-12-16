@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { CoinImage } from '@/assets/images'
-import PageLoader from '@/components/PageLoader.vue'
+// import PageLoader from '@/components/PageLoader.vue'
 import { inject } from 'vue'
 
 const navHeight = inject('navHeight')
@@ -14,7 +14,7 @@ function copyLink(e: Event) {
 </script>
 
 <template>
-  <PageLoader />
+  <!-- <PageLoader /> -->
   <div
     class="bg-teal-snow w-full h-full bg-cover bg-center bg-no-repeat p-2 relative flex flex-col"
     :style="{ paddingBottom: `${navHeight}px` }"
@@ -48,8 +48,8 @@ function copyLink(e: Event) {
         <div class="flex items-start justify-between gap-2 font-semibold text-xs">
           <div class="flex flex-col gap-1">
             <h2 class="text-sm">Your referrals’ upgrades</h2>
-            <p>Level 1 upgrades: 123</p>
-            <p>Level 2 upgrades: 12</p>
+            <p class="ps-1">Level 1 upgrades: 123</p>
+            <p class="ps-1">Level 2 upgrades: 12</p>
           </div>
 
           <div>
@@ -61,7 +61,7 @@ function copyLink(e: Event) {
       <div class="border border-white rounded-md flex flex-col gap-2 p-2">
         <h1 class="text-sm font-bold">Referral-level rewards</h1>
 
-        <div class="flex justify-between items-center text-xs font-semibold">
+        <div class="flex justify-between items-center text-xs font-semibold px-1">
           <h2>Level 2</h2>
 
           <div class="flex gap-1 items-center">
@@ -70,7 +70,7 @@ function copyLink(e: Event) {
           </div>
         </div>
 
-        <div class="flex justify-between items-center text-xs font-semibold">
+        <div class="flex justify-between items-center text-xs font-semibold px-1">
           <h2>Level 2</h2>
 
           <div class="flex gap-1 items-center">
@@ -79,7 +79,7 @@ function copyLink(e: Event) {
           </div>
         </div>
 
-        <div class="flex justify-between items-center text-xs font-semibold">
+        <div class="flex justify-between items-center text-xs font-semibold px-1">
           <h2>Level 2</h2>
 
           <div class="flex gap-1 items-center">
@@ -88,7 +88,7 @@ function copyLink(e: Event) {
           </div>
         </div>
 
-        <div class="flex justify-between items-center text-xs font-semibold">
+        <div class="flex justify-between items-center text-xs font-semibold px-1">
           <h2>Level 2</h2>
 
           <div class="flex gap-1 items-center">
