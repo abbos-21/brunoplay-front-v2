@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount, provide, watch } from 'vue'
-import { RouterView, useRoute } from 'vue-router'
+import { ref, watch, provide, onBeforeUnmount } from 'vue'
+import { useRoute } from 'vue-router'
 import {
   MenuItemFriendsImage,
   MenuItemHomeImage,
@@ -10,14 +10,14 @@ import {
 
 const route = useRoute()
 
-const navIsVisible = ref<boolean>(true)
+const navIsVisible = ref(true)
 
 watch(
   () => route.name,
-  (newName) => {
-    if (newName === 'Leaderboard' || newName === 'Withdrawal') navIsVisible.value = false
-    else navIsVisible.value = true
+  (name) => {
+    navIsVisible.value = !(name === 'Leaderboard' || name === 'Withdrawal')
   },
+  { immediate: true },
 )
 
 const navElement = ref<HTMLElement | null>(null)
@@ -27,18 +27,26 @@ provide('navHeight', navHeight)
 
 let observer: ResizeObserver | null = null
 
-onMounted(() => {
-  if (!navElement.value) return
+watch(
+  navElement,
+  (el) => {
+    observer?.disconnect()
+    observer = null
 
-  observer = new ResizeObserver((entries) => {
-    const entry = entries[0]
-    if (!entry) return
+    if (!el) {
+      navHeight.value = 0
+      return
+    }
 
-    navHeight.value = entry.contentRect.height
-  })
+    observer = new ResizeObserver(([entry]) => {
+      if (!entry) return
+      navHeight.value = entry.contentRect.height
+    })
 
-  observer.observe(navElement.value)
-})
+    observer.observe(el)
+  },
+  { flush: 'post' },
+)
 
 onBeforeUnmount(() => {
   observer?.disconnect()

@@ -6,7 +6,7 @@ import { RouterLink } from 'vue-router'
 
 <template>
   <div
-    class="bg-cyan-snow w-full h-full bg-cover bg-center bg-no-repeat p-2 relative flex flex-col gap-4 text-white"
+    class="bg-cyan-snow w-full h-full bg-cover bg-center bg-no-repeat p-2 relative flex flex-col gap-4 text-white scrollbar-hide overflow-y-scroll"
   >
     <div class="flex justify-between items-center py-4">
       <h1 class="text-2xl font-bold">Withdrawal</h1>

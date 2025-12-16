@@ -19,7 +19,7 @@ const navHeight = inject('navHeight')
   >
     <div class="flex justify-between items-start">
       <RouterLink
-        to="/"
+        to="/withdrawal"
         class="flex gap-2 items-center rounded-full bg-sky-400 px-2 py-1 border-4 border-sky-200"
       >
         <img :src="CoinImage" class="w-5 h-5" alt="coin-image" />
