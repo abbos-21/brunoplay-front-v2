@@ -8,6 +8,7 @@ import {
   CollectButtonImage,
   SpinImage,
   IceImage,
+  PodiumImage,
 } from '@/assets/images'
 import EnergyLevel from '@/components/EnergyLevel.vue'
 import HealthLevel from '@/components/HealthLevel.vue'
@@ -15,19 +16,29 @@ import ProgressBar from '@/components/ProgressBar.vue'
 </script>
 
 <template>
-  <div class="bg-level-1 w-full h-full bg-cover bg-center bg-no-repeat p-2 relative">
+  <div class="bg-level-2 w-full h-full bg-cover bg-center bg-no-repeat p-2 relative">
     <div class="flex justify-between items-start">
-      <RouterLink
-        to="/"
-        class="flex gap-2 items-center rounded-full bg-sky-400 px-2 py-1 border-4 border-sky-200"
-      >
-        <img :src="CoinImage" class="w-5 h-5" alt="coin-image" />
-        <div class="text-center">
-          <p class="font-bold text-sm">34923.123</p>
-          <p class="text-[10px] font-bold text-gray-500">= 0.4 TON</p>
-        </div>
-        <img :src="WithdrawImage" class="w-5 h-5" alt="withdraw-image" />
-      </RouterLink>
+      <div class="flex flex-col gap-2 items-start">
+        <RouterLink
+          to="/"
+          class="flex gap-2 items-center rounded-full bg-sky-400 px-2 py-1 border-4 border-sky-200"
+        >
+          <img :src="CoinImage" class="w-5 h-5" alt="coin-image" />
+          <div class="text-center">
+            <p class="font-bold text-sm">34923.123</p>
+            <p class="text-[10px] font-bold text-gray-500">= 0.4 TON</p>
+          </div>
+          <img :src="WithdrawImage" class="w-5 h-5" alt="withdraw-image" />
+        </RouterLink>
+
+        <RouterLink to="/" class="flex flex-col items-center gap-1">
+          <img :src="PodiumImage" class="w-8" alt="podium-image" />
+
+          <span class="bg-[#00C5A6] text-white text-[10px] font-bold px-1 py-px rounded-md"
+            >29d 10h 54m 53s</span
+          >
+        </RouterLink>
+      </div>
 
       <div class="flex flex-col gap-2 items-end">
         <div class="text-center rounded-full bg-sky-400 px-2 py-1 border-4 border-sky-200">
@@ -50,7 +61,7 @@ import ProgressBar from '@/components/ProgressBar.vue'
       </div>
     </div>
 
-    <div class="flex justify-center items-center">
+    <div class="flex justify-center items-center mt-4">
       <ProgressBar :current-value="75" :max-value="100" class="w-40" />
     </div>
 
