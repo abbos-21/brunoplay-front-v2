@@ -19,7 +19,7 @@ function copyLink(e: Event) {
     class="bg-teal-snow w-full h-full bg-cover bg-center bg-no-repeat p-2 relative flex flex-col"
     :style="{ paddingBottom: `${navHeight}px` }"
   >
-    <div class="flex flex-col gap-4 text-white">
+    <div class="flex flex-col gap-4 text-white scrollbar-hide overflow-y-scroll">
       <h1 class="uppercase text-center text-lg font-bold">invite and earn!</h1>
 
       <div class="flex flex-col gap-1 items-start font-semibold">

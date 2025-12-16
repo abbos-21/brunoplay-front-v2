@@ -7,6 +7,17 @@
   user-select: none; /* Standard syntax */
 }
 
+input,
+textarea {
+  -webkit-touch-callout: default;
+  -webkit-user-select: text;
+  -khtml-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+  outline: none;
+}
+
 body {
   font-family: 'Inter', sans-serif;
 }

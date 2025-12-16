@@ -16,11 +16,11 @@ import ProgressBar from '@/components/ProgressBar.vue'
 </script>
 
 <template>
-  <div class="bg-level-2 w-full h-full bg-cover bg-center bg-no-repeat p-2 relative">
+  <div class="bg-level-1 w-full h-full bg-cover bg-center bg-no-repeat p-2 relative">
     <div class="flex justify-between items-start">
       <div class="flex flex-col gap-2 items-start">
         <RouterLink
-          to="/"
+          to="/withdrawal"
           class="flex gap-2 items-center rounded-full bg-sky-400 px-2 py-1 border-4 border-sky-200"
         >
           <img :src="CoinImage" class="w-5 h-5" alt="coin-image" />
@@ -51,7 +51,7 @@ import ProgressBar from '@/components/ProgressBar.vue'
           <img :src="UnitedKingdomFlagImage" class="w-5 h-5" alt="united-kingdom-flag-image" />
         </div>
 
-        <button type="button" class="w-8 h-8 relative music-button music-disabled">
+        <button type="button" class="w-8 h-8 mx-1 relative music-button music-disabled">
           <img :src="MusicImage" class="w-full h-full" alt="united-kingdom-flag-image" />
 
           <div class="absolute inset-0 flex items-center justify-center">

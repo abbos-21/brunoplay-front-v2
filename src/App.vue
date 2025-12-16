@@ -15,7 +15,7 @@ const navIsVisible = ref<boolean>(true)
 watch(
   () => route.name,
   (newName) => {
-    if (newName === 'Leaderboard') navIsVisible.value = false
+    if (newName === 'Leaderboard' || newName === 'Withdrawal') navIsVisible.value = false
     else navIsVisible.value = true
   },
 )
