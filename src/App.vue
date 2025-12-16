@@ -52,7 +52,7 @@ onBeforeUnmount(() => {
           <img :src="MenuItemTasksImage" alt="menu-item-tasks-image" />
         </RouterLink>
 
-        <RouterLink to="/" class="cursor-pointer">
+        <RouterLink to="/friends" class="cursor-pointer">
           <img :src="MenuItemFriendsImage" alt="menu-item-friends-image" />
         </RouterLink>
       </nav>
