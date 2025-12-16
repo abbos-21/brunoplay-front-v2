@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { CoinImage } from '@/assets/images'
+import PageLoader from '@/components/PageLoader.vue'
 import { inject } from 'vue'
 
 const navHeight = inject('navHeight')
@@ -13,6 +14,7 @@ function copyLink(e: Event) {
 </script>
 
 <template>
+  <PageLoader />
   <div
     class="bg-teal-snow w-full h-full bg-cover bg-center bg-no-repeat p-2 relative flex flex-col"
     :style="{ paddingBottom: `${navHeight}px` }"
