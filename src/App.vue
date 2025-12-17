@@ -9,7 +9,7 @@ import {
 } from './assets/images'
 // import { BackgroundAudio } from './assets/audios'
 // import { useBackgroundMusic } from './composables/useBackgroundMusic'
-import WebApp from '@twa-dev/sdk'
+import { telegram } from './services/telegram'
 import { AuthAPI } from './services/auth.api'
 
 const route = useRoute()
@@ -52,14 +52,15 @@ watch(
   { flush: 'post' },
 )
 
-onBeforeUnmount(() => {
-  observer?.disconnect()
-})
+async function authenticate() {
+  telegram.init()
 
-onMounted(async () => {
-  WebApp.ready()
-  WebApp.expand()
-  const initData = WebApp.initData
+  if (!telegram.isTelegram()) {
+    console.error('Not running inside Telegram')
+    return
+  }
+
+  const initData = telegram.initData
 
   if (!initData) {
     console.error('Telegram initData not found')
@@ -67,9 +68,22 @@ onMounted(async () => {
   }
 
   const { token } = await AuthAPI.loginWithTelegram(initData)
-  console.log(token)
 
   localStorage.setItem('token', token)
+}
+
+onBeforeUnmount(() => {
+  observer?.disconnect()
+})
+
+onMounted(async () => {
+  const token = localStorage.getItem('token')
+
+  if (token) {
+    return
+  }
+
+  await authenticate()
 })
 </script>
 

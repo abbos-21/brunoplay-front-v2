@@ -1,4 +1,5 @@
 import http from './http'
+import { telegram } from './telegram'
 
 http.interceptors.request.use(
   (config) => {
@@ -17,6 +18,8 @@ http.interceptors.response.use(
   (response) => response.data,
   (error) => {
     if (error.response?.status === 401) {
+      localStorage.removeItem('token')
+      telegram.close()
     }
     return Promise.reject(error)
   },
