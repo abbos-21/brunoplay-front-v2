@@ -1,6 +1,7 @@
 import { ref, onUnmounted } from 'vue'
 import { GameAPI } from '@/services/game.api'
 import type { User } from '@/types'
+import { UserAPI } from '@/services/user.api'
 
 const user = ref<User | null>(null)
 let miningInterval: ReturnType<typeof setInterval> | null = null
@@ -27,6 +28,11 @@ const stopMiningSimulation = () => {
 }
 
 export function useGame() {
+  const getUserData = async () => {
+    const response = await UserAPI.getCurrentUser()
+    user.value = response.data.user
+  }
+
   const sync = async () => {
     const response = await GameAPI.sync()
     user.value = response.data.user
@@ -50,6 +56,7 @@ export function useGame() {
   onUnmounted(stopMiningSimulation)
 
   return {
+    getUserData,
     sync,
     mine,
     collect,

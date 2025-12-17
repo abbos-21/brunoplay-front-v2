@@ -17,13 +17,13 @@ import EnergyLevel from '@/components/EnergyLevel.vue'
 import HealthLevel from '@/components/HealthLevel.vue'
 import ProgressBar from '@/components/ProgressBar.vue'
 import { useGame } from '@/composables/useGame'
-import type PageLoaderVue from '@/components/PageLoader.vue'
+import PageLoader from '@/components/PageLoader.vue'
 
-const { sync, mine, collect, user } = useGame()
+const { getUserData, mine, collect, user } = useGame()
 const loading = ref<boolean>(true)
 
 onMounted(async () => {
-  await sync().finally(() => {
+  await getUserData().finally(() => {
     loading.value = false
   })
 
