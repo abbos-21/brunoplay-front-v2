@@ -67,6 +67,7 @@ onMounted(async () => {
   }
 
   const { token } = await AuthAPI.loginWithTelegram(initData)
+  console.log(token)
 
   localStorage.setItem('token', token)
 })
