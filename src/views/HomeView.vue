@@ -1,7 +1,6 @@
 <script setup lang="ts">
 // import { BackgroundAudio } from '@/assets/audios'
 // import { useBackgroundMusic } from '@/composables/useBackgroundMusic'
-import { ref, onMounted } from 'vue'
 import { RouterLink } from 'vue-router'
 import {
   WithdrawImage,
@@ -16,25 +15,11 @@ import {
 import EnergyLevel from '@/components/EnergyLevel.vue'
 import HealthLevel from '@/components/HealthLevel.vue'
 import ProgressBar from '@/components/ProgressBar.vue'
-import { useGame } from '@/composables/useGame'
 import PageLoader from '@/components/PageLoader.vue'
-
-const { getUserData, mine, collect, user } = useGame()
-const loading = ref<boolean>(true)
-
-onMounted(async () => {
-  await getUserData().finally(() => {
-    loading.value = false
-  })
-
-  if (!user.value?.isMining) {
-    mine()
-  }
-})
 </script>
 
 <template>
-  <PageLoader v-if="loading" />
+  <PageLoader />
   <div class="bg-level-1 w-full h-full bg-cover bg-center bg-no-repeat p-2 relative">
     <div class="flex justify-between items-start">
       <div class="flex flex-col gap-2 items-start">
@@ -44,7 +29,7 @@ onMounted(async () => {
         >
           <img :src="CoinImage" class="w-5 h-5" alt="coin-image" />
           <div class="text-center">
-            <p class="font-bold text-sm">{{ user?.coins }}</p>
+            <p class="font-bold text-sm">12345.67</p>
             <p class="text-[10px] font-bold text-gray-500">= 0.4 TON</p>
           </div>
           <img :src="WithdrawImage" class="w-5 h-5" alt="withdraw-image" />
@@ -61,7 +46,7 @@ onMounted(async () => {
 
       <div class="flex flex-col gap-2 items-end">
         <div class="text-center rounded-full bg-sky-400 px-2 py-1 border-4 border-sky-200">
-          <p class="text-sm font-bold">Your level: {{ user?.level }}</p>
+          <p class="text-sm font-bold">Your level: 1</p>
         </div>
 
         <div
@@ -81,25 +66,21 @@ onMounted(async () => {
     </div>
 
     <div class="flex justify-center items-center mt-4">
-      <ProgressBar
-        :current-value="user?.tempCoins as number"
-        :max-value="user?.vaultCapacity as number"
-        class="w-40"
-      />
+      <ProgressBar :current-value="75" :max-value="100" class="w-40" />
     </div>
 
     <div
       class="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-between items-center w-full px-2"
     >
-      <HealthLevel :current-value="user?.healthLevel" :max-value="user?.maxHealth" />
-      <EnergyLevel :current-value="user?.energyLevel" :max-value="user?.maxEnergy" />
+      <HealthLevel :current-value="75" :max-value="100" />
+      <EnergyLevel :current-value="75" :max-value="100" />
     </div>
 
     <div class="absolute inset-x-0 mx-auto bottom-25 flex justify-between items-start px-2">
       <button type="button">
         <img :src="IceImage" class="w-9" alt="ice-image" />
       </button>
-      <button type="button" class="collect-button" @click="collect()">
+      <button type="button" class="collect-button">
         <img :src="CollectButtonImage" class="w-full" alt="collect-button-image" />
       </button>
       <button type="button">
