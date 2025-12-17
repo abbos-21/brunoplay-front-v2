@@ -15,11 +15,11 @@ import {
 import EnergyLevel from '@/components/EnergyLevel.vue'
 import HealthLevel from '@/components/HealthLevel.vue'
 import ProgressBar from '@/components/ProgressBar.vue'
-import PageLoader from '@/components/PageLoader.vue'
+// import PageLoader from '@/components/PageLoader.vue'
 </script>
 
 <template>
-  <PageLoader />
+  <!-- <PageLoader /> -->
   <div class="bg-level-1 w-full h-full bg-cover bg-center bg-no-repeat p-2 relative">
     <div class="flex justify-between items-start">
       <div class="flex flex-col gap-2 items-start">
